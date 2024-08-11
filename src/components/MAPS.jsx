@@ -34,7 +34,7 @@ const MAPS = () => {
   return (
     <div>
       <DeckGL
-        style={{ width: "50vw", height: "100vh", overflow: "hidden" }}
+        style={{ width: "50vw", height: "80vh", overflow: "hidden", position:"relative",   borderRadius: "10px", }}
         viewState={viewState}
         onViewStateChange={({ viewState }) => setViewState(viewState)}
         controller={true}
