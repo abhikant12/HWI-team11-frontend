@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import MapFun from './components/MapFun';  
+  
+import GetCityDetail from './components/GetCityDetails';
 import ChatApp from './pages/chat';
 
 export default function App() {
@@ -9,7 +10,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
 
-          <Route path="/" element={<MapFun />} />
+          <Route path="/" element={<GetCityDetail />} />
           <Route path="/chat" element={<ChatApp />} />
         </Routes>
       </BrowserRouter>
