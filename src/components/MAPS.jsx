@@ -7,9 +7,9 @@ import "maplibre-gl/dist/maplibre-gl.css";
 
 const MAPS = () => {
   const [viewState, setViewState] = useState({
-    longitude: 0,
-    latitude: 0,
-    zoom: 1,
+    longitude:78.9629 ,
+    latitude:20.5937,
+    zoom: 3.7,
   });
   const data = [
     { position: [12.4924, 41.8902], color: [255, 0, 0], size: 1000 }, // Red point (Rome, Colosseum)
