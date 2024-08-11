@@ -1,13 +1,18 @@
-import './App.css';
-import MAPS from './components/MAPS';
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import MapFun from './components/MapFun';  
 
-function App() {
+
+export default function App() {
   return (
-    <div className="App">
-       abhikant
-       <MAPS/>
+    <div>
+      <BrowserRouter>
+        <Routes>
+
+          <Route path="/" element={<MapFun />} />
+          
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
-
-export default App;
