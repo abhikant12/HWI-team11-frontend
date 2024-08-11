@@ -10,9 +10,9 @@ import axios from 'axios';
 
 const MAPS = () => {
   const [viewState, setViewState] = useState({
-    longitude: 0,
-    latitude: 0,
-    zoom: 1,
+    longitude:78.9629 ,
+    latitude:20.5937,
+    zoom: 3.7,
   });
   const [data, setData] = useState([]);
 
