@@ -1,12 +1,18 @@
-import React from 'react';
+import React,  { useContext }  from 'react';
 import { useNavigate } from 'react-router-dom';
 import GraphComponent from './Graph';
 import MAPS from './MAPS';
 import Navbar from './Navbar';
+import Infomation from './Information';
+import Searchcities from './Searchcities';
+import { GlobalStateContext } from '../helper/context';
+
 
 function GetCityDetail() {
 
   const navigate = useNavigate();
+  const { globalData } = useContext(GlobalStateContext);
+
 
   const handleChatClick = () => {
     navigate('/chat');
@@ -21,17 +27,8 @@ function GetCityDetail() {
        
         {/* Form Card */}
         <div className='flex flex-col space-y-4 bg-white shadow-lg rounded-lg p-6 mb-4 md:mb-0 md:mr-4 w-full md:w-1/3'>
-           
-          <div className='flex flex-col'>
-            <label htmlFor='source' className='text-lg font-medium'>City</label>
-            <input type='text' id='source' className='border border-gray-300 p-2 rounded-md' />
-          </div>
-          
-          <div>
-            <button className='bg-green-800 hover:bg-green-700 text-white p-3 rounded-md font-bold w-full transition duration-200 ease-in-out transform hover:scale-105'>
-              Get Details
-            </button>         
-          </div>
+
+          <Searchcities/>
           
           <div>
             <GraphComponent />
@@ -43,6 +40,10 @@ function GetCityDetail() {
           <MAPS />
         </div>
       </div>
+
+          <div className='p-6'>
+              <Infomation />
+          </div>
 
       {/* Chat Icon with Tooltip */}
       <div className='relative'>

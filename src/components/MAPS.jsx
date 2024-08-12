@@ -17,23 +17,64 @@ const MAPS = () => {
   const [data, setData] = useState([]);
 
 
+
   useEffect(() => {
-    const fetchCityData = () => {
-      const cityData = cities.map(city => {
-        const { latitude, longitude } = city;  
-        return {
-          position: [longitude, latitude], // [longitude, latitude]
-          color: [255, 0, 0], // Red color for points
-          size: 1000, // Size of the points
-        };
-      });
-      setData(cityData);
+    const fetchCityData = async () => {
+      try {
+        
+        const response = await axios.get('http://localhost:4000/api/v1/floodprobaility/getSeverities');
+        const severities = response.data;
+
+        const cityDataPromises = [];
+
+        for(let i = 0; i < cities.length; i++){
+          const { latitude, longitude, city } = cities[i];
+
+          // Find the corresponding severity for the current city
+          const citySeverityData = severities.find(severityData => severityData.city === city);
+          const severity = citySeverityData ? citySeverityData.severity : 0;
+
+          // Determine color based on severity
+          let color;
+          switch (severity) {
+            case 0:
+              color = [0, 255, 0]; // Green
+              break;
+            case 1:
+              color = [255, 255, 0]; // Yellow
+              break;
+            case 2:
+              color = [255, 165, 0]; // Orange
+              break;
+            case 3:
+              color = [255, 0, 0]; // Red
+              break;
+            default:
+              color = [128, 128, 128]; // Gray for unknown severity
+          }
+
+          const cityData = {
+            position: [longitude, latitude], 
+            color, 
+            size: 1000, 
+          };
+
+          cityDataPromises.push(Promise.resolve(cityData));
+        }
+
+        const cityData = await Promise.all(cityDataPromises);
+        setData(cityData);
+      } catch (error) {
+        console.error("Error processing city data:", error.message || error);
+      }
     };
 
     fetchCityData();
   }, []);
-  
-  
+
+ 
+
+
   // useEffect(() => {
   //   const fetchCityData = async () => {
      
@@ -68,12 +109,6 @@ const MAPS = () => {
   //   { position: [-74.006, 40.7128], color: [0, 255, 0], size: 1000 }, // Green point (New York)
   //   { position: [139.6917, 35.6895], color: [0, 0, 255], size: 1000 }, // Blue point (Tokyo)
   // ];
-
-
-
-
-
-
 
 
   const scatterplotLayer = new ScatterplotLayer({

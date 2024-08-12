@@ -140,24 +140,25 @@
 
 
 export const cities = [
-  { city: "Mumbai", latitude: 19.0760, longitude: 72.8777, population_density_per_km2: 20771 },
-  { city: "Delhi", latitude: 28.6139, longitude: 77.2090, population_density_per_km2: 11200 },
-  { city: "Bengaluru", latitude: 12.9716, longitude: 77.5946, population_density_per_km2: 4460 },
-  { city: "Chennai", latitude: 13.0827, longitude: 80.2707, population_density_per_km2: 2650 },
-  { city: "Kolkata", latitude: 22.5726, longitude: 88.3639, population_density_per_km2: 24300 },
-  { city: "Hyderabad", latitude: 17.3850, longitude: 78.4867, population_density_per_km2: 5800 },
-  { city: "Pune", latitude: 18.5204, longitude: 73.8567, population_density_per_km2: 7200 },
-  { city: "Ahmedabad", latitude: 23.0225, longitude: 72.5714, population_density_per_km2: 5500 },
-  { city: "Jaipur", latitude: 26.9124, longitude: 75.7873, population_density_per_km2: 1800 },
-  { city: "Lucknow", latitude: 26.8467, longitude: 80.9462, population_density_per_km2: 6700 },
-  { city: "Kanpur", latitude: 26.4499, longitude: 80.3319, population_density_per_km2: 12800 },
-  { city: "Nagpur", latitude: 21.1458, longitude: 79.0882, population_density_per_km2: 6800 },
-  { city: "Indore", latitude: 22.7196, longitude: 75.8577, population_density_per_km2: 5900 },
-  { city: "Thane", latitude: 19.2183, longitude: 73.0781, population_density_per_km2: 20500 },
-  { city: "Bhopal", latitude: 23.2599, longitude: 77.4126, population_density_per_km2: 2500 },
-  { city: "Pimpri-Chinchwad", latitude: 18.6298, longitude: 73.7994, population_density_per_km2: 8600 },
-  { city: "Patna", latitude: 25.5941, longitude: 85.1376, population_density_per_km2: 17000 },
-  { city: "Vadodara", latitude: 22.3074, longitude: 73.1812, population_density_per_km2: 3700 },
-  { city: "Agra", latitude: 27.1767, longitude: 78.0081, population_density_per_km2: 4500 },
-  { city: "Nashik", latitude: 20.0116, longitude: 73.7908, population_density_per_km2: 4100 }
+  { city: "Mumbai", latitude: 19.0760, longitude: 72.8777, population_density_per_km2: 20771, altitude: 14 }, // meters above sea level
+  { city: "Delhi", latitude: 28.6139, longitude: 77.2090, population_density_per_km2: 11200, altitude: 216 },
+  { city: "Bengaluru", latitude: 12.9716, longitude: 77.5946, population_density_per_km2: 4460, altitude: 920 },
+  { city: "Chennai", latitude: 13.0827, longitude: 80.2707, population_density_per_km2: 2650, altitude: 6 },
+  { city: "Kolkata", latitude: 22.5726, longitude: 88.3639, population_density_per_km2: 24300, altitude: 9 },
+  { city: "Hyderabad", latitude: 17.3850, longitude: 78.4867, population_density_per_km2: 5800, altitude: 542 },
+  { city: "Pune", latitude: 18.5204, longitude: 73.8567, population_density_per_km2: 7200, altitude: 560 },
+  { city: "Ahmedabad", latitude: 23.0225, longitude: 72.5714, population_density_per_km2: 5500, altitude: 53 },
+  { city: "Jaipur", latitude: 26.9124, longitude: 75.7873, population_density_per_km2: 1800, altitude: 431 },
+  { city: "Lucknow", latitude: 26.8467, longitude: 80.9462, population_density_per_km2: 6700, altitude: 123 },
+  { city: "Kanpur", latitude: 26.4499, longitude: 80.3319, population_density_per_km2: 12800, altitude: 126 },
+  { city: "Nagpur", latitude: 21.1458, longitude: 79.0882, population_density_per_km2: 6800, altitude: 310 },
+  { city: "Indore", latitude: 22.7196, longitude: 75.8577, population_density_per_km2: 5900, altitude: 553 },
+  { city: "Thane", latitude: 19.2183, longitude: 73.0781, population_density_per_km2: 20500, altitude: 7 },
+  { city: "Bhopal", latitude: 23.2599, longitude: 77.4126, population_density_per_km2: 2500, altitude: 527 },
+  { city: "Pimpri-Chinchwad", latitude: 18.6298, longitude: 73.7994, population_density_per_km2: 8600, altitude: 570 },
+  { city: "Patna", latitude: 25.5941, longitude: 85.1376, population_density_per_km2: 17000, altitude: 53 },
+  { city: "Vadodara", latitude: 22.3074, longitude: 73.1812, population_density_per_km2: 3700, altitude: 39 },
+  { city: "Agra", latitude: 27.1767, longitude: 78.0081, population_density_per_km2: 4500, altitude: 169 },
+  { city: "Nashik", latitude: 20.0116, longitude: 73.7908, population_density_per_km2: 4100, altitude: 584 }
 ];
+

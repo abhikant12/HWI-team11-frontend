@@ -1,21 +1,40 @@
-import React, { useEffect, useState } from 'react';
+import { CategoryScale, Chart, Legend, LinearScale, LineElement, PointElement, Title, Tooltip } from 'chart.js';
+import React, { useContext, useState } from 'react';
 import { Line } from 'react-chartjs-2';
-import { Chart, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import { GlobalStateContext } from '../helper/context';
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+
+
 
 const GraphComponent = () => {
 
 
   const [floodData, setFloodData] = useState([]);
-  useEffect(() => {
-    // Generate random flood data for 7 days
-    const generateRandomData = () => {
-      return Array.from({ length: 7 }, () => Math.floor(Math.random() * 100) + 1);
-    };
+  const { coor } = useContext(GlobalStateContext);
 
-    setFloodData(generateRandomData());
-  }, []);
+
+  const fetchData = async () => {
+    try {
+       const {latitude, longitude} = coor;
+       const response = await fetch(`http://localhost:4000/api/v1/floodprobaility/riverdata?latitude=${latitude}&longitude=${longitude}`);
+       const data = await response.json(); // Parse JSON response
+      console.log(data); // Log data to inspect its structure
+      
+      // Check if data is an array
+      if (Array.isArray(data)) {
+        const dischargeData = data.map(item => item.river_discharge);
+        setFloodData(dischargeData);
+        console.log(dischargeData);
+      } else {
+        console.error('Data is not an array:', data);
+      }
+    } catch (error) {
+      console.error('Error fetching flood data:', error);
+    }
+  };
+  
+  
 
   
   const data = {
@@ -52,6 +71,9 @@ const GraphComponent = () => {
   return (
     <div className='w-full mt-8'>
       <Line data={data} options={options} />
+      <button onClick={fetchData} className='bg-green-800 hover:bg-green-700 text-white p-3 rounded-md font-bold w-full transition duration-200 ease-in-out transform hover:scale-105'>
+         Get Discharge Data
+      </button>
     </div>
   );
 };

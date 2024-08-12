@@ -64,7 +64,7 @@ function Navbar() {
     <div>
       <ToastContainer />
       <div className='bg-blue-500 p-4 flex justify-between items-center font-bold text-2xl'>
-        <div className='text-white'>Navbar</div>
+        <div className='text-white'>Geospatial AI for Flood Risk Management</div>
         {!isLoggedIn && (
           <button
             className='bg-white text-blue-500 font-semibold py-2 px-4 rounded-full hover:bg-gray-100 shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105'

@@ -3,17 +3,18 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
   
 import GetCityDetail from './components/GetCityDetails';
 import ChatApp from './pages/chat';
+import { GlobalStateProvider } from './helper/context';
+
 
 export default function App() {
   return (
-    <div>
+    <GlobalStateProvider>
       <BrowserRouter>
         <Routes>
-
           <Route path="/" element={<GetCityDetail />} />
           <Route path="/chat" element={<ChatApp />} />
         </Routes>
       </BrowserRouter>
-    </div>
+    </GlobalStateProvider>
   );
 }
