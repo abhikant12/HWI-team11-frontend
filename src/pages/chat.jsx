@@ -3,9 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 const ChatApp = () => {
   const [messages, setMessages] = useState([
-    { text: 'Hello, how are you?', isUser: false, timestamp: new Date().toLocaleTimeString() },
-    { text: 'I am good, thanks for asking!', isUser: true, timestamp: new Date().toLocaleTimeString() },
-    { text: 'What are you up to today?', isUser: false, timestamp: new Date().toLocaleTimeString() },
+    { text: 'Hello, how can I help you?', isUser: false, timestamp: new Date().toLocaleTimeString() },
   ]);
 
   const [newMessage, setNewMessage] = useState('');

@@ -17,6 +17,7 @@ const GraphComponent = () => {
   const fetchData = async () => {
     try {
        const {latitude, longitude} = coor;
+       console.log(coor);
        const response = await fetch(`http://localhost:4000/api/v1/floodprobaility/riverdata?latitude=${latitude}&longitude=${longitude}`);
        const data = await response.json(); // Parse JSON response
       console.log(data); // Log data to inspect its structure
@@ -41,7 +42,7 @@ const GraphComponent = () => {
     labels: ['1st Day', '2nd Day', '3rd Day', '4th Day', '5th Day', '6th Day', '7th Day'],
     datasets: [
       {
-        label: 'Flood Level',
+        label: 'Water discharge (m3/s)',
         data: floodData,
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
@@ -56,7 +57,7 @@ const GraphComponent = () => {
         beginAtZero: true,
         title: {
           display: true,
-          text: 'Flood Mark'
+          text: 'Water discharge (m3/s)'
         }
       },
       x: {

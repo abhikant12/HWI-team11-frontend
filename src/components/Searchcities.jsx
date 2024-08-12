@@ -48,11 +48,26 @@ const Searchcities = () => {
 
 
 
-const { saveData, globalData , savecoor} = useContext(GlobalStateContext);
+const { saveData, globalData, savecoor} = useContext(GlobalStateContext);
 
 const handleClick = async () => {
   if(selectedCity){
     try {
+
+
+      const response1 = await axios.get('http://localhost:4000/api/v1/floodprobaility/riverdata', {
+        params: {
+            latitude: selectedCity.latitude,
+            longitude: selectedCity.longitude
+        }
+      });
+
+
+      const response2 = await axios.get('http://localhost:4000/api/v1/floodprobaility/flooddata', {
+        params: {
+            city:selectedCity.city,
+        }
+      });
 
       // Make the GET request to the API
       const response = await axios.get('http://localhost:4000/api/v1/floodprobaility/weatherdata', {
@@ -62,26 +77,24 @@ const handleClick = async () => {
         }
       });
 
-      const response1 = await axios.get('http://localhost:4000/api/v1/floodprobaility/riverdata', {
-        params: {
-            latitude: selectedCity.latitude,
-            longitude: selectedCity.longitude
-        }
-      });
+      // const response1 = await axios.get('http://localhost:4000/api/v1/floodprobaility/riverdata', {
+      //   params: {
+      //       latitude: selectedCity.latitude,
+      //       longitude: selectedCity.longitude
+      //   }
+      // });
 
-      const response2 = await axios.get('http://localhost:4000/api/v1/floodprobaility/flooddata', {
-        params: {
-            city:selectedCity.city,
-        }
-      });
+      
 
       const combinedData = {
         ...response.data,
         population_density_per_km2: selectedCity.population_density_per_km2,
         altitude : selectedCity.altitude,
-        //...response1.data,
+        ...response1.data,
         ...response2.data,
       };
+
+      console.log(combinedData);
 
 
       const severity = combinedData.Severity;
@@ -177,6 +190,7 @@ Advice for use of inputs: Use population density to assess the impact on human l
           latitude: selectedCity.latitude,
           longitude: selectedCity.longitude
         });
+      
 
     } catch (error) {
       console.error('Failed to retrieve data:', error.response ? error.response.data : error.message);
